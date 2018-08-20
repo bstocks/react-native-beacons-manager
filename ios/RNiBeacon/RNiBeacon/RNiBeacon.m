@@ -412,13 +412,13 @@ RCT_EXPORT_METHOD(shouldDropEmptyRanges:(BOOL)drop)
 
 - (NSString *)getEddyStoneUUID:(NSData*)data {
     const unsigned char *dataBuffer = (const unsigned char *)[data bytes];
-    const int EDDYSTONE_UUID_LENGTH = 10;
+    const int EDDYSTONE_UUID_LENGTH = 16;
     if (!dataBuffer) {
         return [NSString string];
     }
     
     NSMutableString *hexString  = [NSMutableString stringWithCapacity:(data.length * 2)];
-    [hexString appendString:@"0x"];
+    // [hexString appendString:@"0x"];
     for (int i = 0; i < EDDYSTONE_UUID_LENGTH; ++i) {
         [hexString appendString:[NSString stringWithFormat:@"%02lx", (unsigned long)dataBuffer[i]]];
     }
